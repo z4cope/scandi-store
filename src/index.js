@@ -1,17 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+//General react imports
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+//Redux
+
+//Apollo & Graphql stuff
+import { ApolloProvider } from "@apollo/client";
+import { client } from "./server/apollo";
+import GlobalStyle from "./globalstyles/globalStyles";
+//WebVitals
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
+    <GlobalStyle />
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </ApolloProvider>,
+
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
