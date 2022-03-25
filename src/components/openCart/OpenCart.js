@@ -8,8 +8,6 @@ import {
   productQuantityIncrementAction,
   productQuatityDecrementAction,
 } from "../../redux/actions/productQuantity/productQuantityAction";
-//Utils
-import { handelPrice } from "../../utils/changePrice";
 //Styles
 import {
   CartOverlay,
@@ -23,7 +21,10 @@ import {
   CartProductNumber,
   Total,
   CallToActions,
+  Color,
+  SelectedVariants,
 } from "./style";
+import { generateTotalPrice } from "../../utils/calcTotalPrice";
 
 class OpenCart extends React.Component {
   render() {
@@ -42,9 +43,18 @@ class OpenCart extends React.Component {
                         {product.prices[0].amount}
                       </CartProductPrice>
                       <CartProductSpecs>
-                        {product.attributes.length
-                          ? product.attributes[0].items[0].value
-                          : null}
+                        {product.attributes.map((attr, i) =>
+                          attr.id === "Color" ? (
+                            <Color
+                              key={attr.selectedVariant.id}
+                              color={attr.selectedVariant.value}
+                            />
+                          ) : (
+                            <SelectedVariants key={i}>
+                              {attr.selectedVariant.id}
+                            </SelectedVariants>
+                          )
+                        )}
                       </CartProductSpecs>
                     </CardDetailsWrapper>
                     <CartProductNumber>
@@ -69,6 +79,8 @@ class OpenCart extends React.Component {
             : null}
           <Total>
             <h3>Total</h3>
+            {this.props.currencySymbol}
+            {generateTotalPrice(this.props.cart, this.props.currencySymbol)}
           </Total>
           <CallToActions>
             <Link to="/cart">VIEW BAG</Link>
@@ -84,7 +96,7 @@ const mapStateToProps = (state) => {
   return {
     cart: Object.values(state.cart.data),
     toggle: state.toggle.toggleState,
-    currencySymbol: state.currency.currencySymbol,
+    currencySymbol: state.currency.currentSymbol,
   };
 };
 

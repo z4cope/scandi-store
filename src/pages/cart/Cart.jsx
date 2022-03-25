@@ -18,7 +18,7 @@ import {
   ProductWrapper,
   ProductDetails,
   ProductName,
-  ProductSubName,
+  ProductDesc,
   Price,
   Sizes,
   ProductQuantity,
@@ -38,7 +38,7 @@ class Cart extends React.Component {
                 <ProductWrapper key={product.cartId}>
                   <ProductDetails>
                     <ProductName>{product.name}</ProductName>
-                    <ProductSubName
+                    <ProductDesc
                       dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(product.description),
                       }}
@@ -48,14 +48,14 @@ class Cart extends React.Component {
                       {handelPrice(product.prices, this.props.currencySymbol)}
                     </Price>
                     <Sizes>
-                      {product.attributes.map((attr) =>
+                      {product.attributes.map((attr, i) =>
                         attr.id === "Color" ? (
                           <Color
                             key={attr.selectedVariant.id}
                             color={attr.selectedVariant.value}
                           />
                         ) : (
-                          <SelectedVariants key={attr.selectedVariant.id}>
+                          <SelectedVariants key={i}>
                             {attr.selectedVariant.id}
                           </SelectedVariants>
                         )

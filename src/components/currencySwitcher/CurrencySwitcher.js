@@ -1,11 +1,13 @@
 //General react imports
 import React from "react";
+
 //Redux stuff
 import { connect } from "react-redux";
 import {
   currencyAction,
   activeCurrency,
 } from "../../redux/actions/currencyAction/currencyAction";
+
 //Styles
 import { SwitcherWrapper, Currency } from "./style";
 
@@ -33,6 +35,7 @@ class CurrencySwitcher extends React.Component {
   }
 }
 
+//State To Props & Dispatch To Props
 const mapStateToProps = (state) => {
   return {
     toggle: state.toggle.toggleCurrencyMenuState,

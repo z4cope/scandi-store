@@ -1,7 +1,7 @@
 //Genral react imports
 import React from "react";
 //Components
-import Layout from "./layout/Layout";
+import RouterRefreshResolver from "./routerRefreshResolver/RouterRefreshResolver";
 import NavRoutes from "./routes/NavRoutes";
 //Redux
 import { Provider } from "react-redux";
@@ -14,9 +14,9 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Router>
-          <Layout>
+          <RouterRefreshResolver>
             <NavRoutes />
-          </Layout>
+          </RouterRefreshResolver>
         </Router>
       </Provider>
     );

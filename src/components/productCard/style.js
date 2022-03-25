@@ -20,7 +20,6 @@ export const Product = styled.div`
   width: 386px;
   height: 444px;
   padding: 16px;
-  flex: 0 0 calc(93.5% / 3);
   transition: all 0.3s ease;
   position: relative;
   h2 {

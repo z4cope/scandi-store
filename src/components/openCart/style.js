@@ -15,12 +15,13 @@ export const CartOverlay = styled.div`
 
 export const CartList = styled.div`
   width: 325px;
-  min-height: 10vh;
+  height: 540px;
   background-color: white;
   margin-right: 5%;
   padding: 16px;
   position: absolute;
   right: 0;
+  overflow: scroll;
 `;
 
 export const CartDetails = styled.div`
@@ -33,23 +34,25 @@ export const CartDetails = styled.div`
 export const CartTitle = styled.h3`
   margin-bottom: 2rem;
 `;
+
 export const CardDetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: space-between;
 `;
+
 export const CartPoductName = styled.h3`
   font-weight: 300;
   font-size: 16px;
-  line-height: 160%;
   width: 136px;
 `;
+
 export const CartProductPrice = styled.h3`
   font-weight: 500;
   font-size: 16px;
-  line-height: 160%;
 `;
+
 export const CartProductSpecs = styled.div`
   display: flex;
   h6 {
@@ -96,6 +99,8 @@ export const Total = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 37px;
+  font-weight: 700;
+  font-size: 16px;
 `;
 
 //Call to actions
@@ -121,4 +126,26 @@ export const CallToActions = styled.div`
       color: white;
     }
   }
+`;
+
+export const Color = styled.button`
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  background-color: ${({ color }) => color};
+  border: 1px solid #000;
+  margin: 0 12px 40px 0;
+`;
+
+export const SelectedVariants = styled.h3`
+  min-width: 24px;
+  height: 24px;
+  border: 1px solid #1d1f22;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
 `;

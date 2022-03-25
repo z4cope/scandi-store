@@ -8,19 +8,19 @@ import {
   AttributeName,
   AttributeTypeWrapper,
   Color,
-  TechVariants,
   VariantBox,
+  VariantsWrapper,
 } from "./style";
 
 class Variants extends React.Component {
   render() {
     const isActive = (itemId) => {
       const variant = this.props.selectedVariant || this.props.defaultVariant;
-      return variant?.id == itemId;
+      return variant?.id === itemId;
     };
 
     return this.props.attr.type === "swatch" ? (
-      <TechVariants>
+      <VariantsWrapper>
         <AttributeName>{this.props.attr.name}:</AttributeName>
         <AttributeTypeWrapper>
           {this.props.attr.items.map((item) => (
@@ -33,9 +33,9 @@ class Variants extends React.Component {
             />
           ))}
         </AttributeTypeWrapper>
-      </TechVariants>
+      </VariantsWrapper>
     ) : (
-      <TechVariants>
+      <VariantsWrapper>
         <AttributeName>{this.props.attr.name}:</AttributeName>
         <AttributeTypeWrapper>
           {this.props.attr.items.map((item) => (
@@ -50,7 +50,7 @@ class Variants extends React.Component {
             </VariantBox>
           ))}
         </AttributeTypeWrapper>
-      </TechVariants>
+      </VariantsWrapper>
     );
   }
 }

@@ -64,7 +64,7 @@ export const Swatches = styled.div`
 `;
 
 export const Price = styled.h2`
-  margin-bottom: 10px;
+  margin: 40px 0px 10px 0px;
   font-size: 18px;
 `;
 
@@ -86,5 +86,4 @@ export const AddToCartBtn = styled.button`
 
 export const ProductDescription = styled.p`
   width: 292px;
-  line-height: 159.96%;
 `;

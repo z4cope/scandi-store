@@ -15,12 +15,14 @@ class Home extends React.Component {
   render() {
     return (
       <HomeWrapper>
-        <HomeHeadLine>Category name</HomeHeadLine>
+        <HomeHeadLine>{this.props.catName}</HomeHeadLine>
         <ProductsWrapper>
           {this.props.categories.length
-            ? this.props.categories[0].products.map((product) => (
-                <ProductCard key={product.name} product={product} />
-              ))
+            ? this.props.categories[this.props.filteredProducts].products.map(
+                (product) => (
+                  <ProductCard key={product.name} product={product} />
+                )
+              )
             : null}
         </ProductsWrapper>
       </HomeWrapper>
@@ -33,6 +35,8 @@ const mapStateToProps = (state) => {
   return {
     categories: state.categories.data,
     cart: state.cart.data,
+    filteredProducts: state.filterPages.arrayIndex,
+    catName: state.filterPages.catName,
   };
 };
 

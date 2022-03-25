@@ -1,34 +1,67 @@
 //General React imports
 import React from "react";
 import { Link } from "react-router-dom";
+
 //Components
 import OpenCart from "../openCart/OpenCart";
+import CurrencySwitcher from "../currencySwitcher/CurrencySwitcher";
+
 //Redux
 import { connect } from "react-redux";
-import logo from "../../assests/Brand-icon.png";
-//Styles
-import { StyledNavWrapper, StyledEmptyCart } from "./style";
+
+//Actions
 import {
   toggleCartAction,
   toggleCurrencyMenu,
 } from "../../redux/actions/toggleCart/toggleCartAction";
-import CurrencySwitcher from "../currencySwitcher/CurrencySwitcher";
+import { productsFilterAction } from "../../redux/actions/pagesFilterAction/productsFilterAction";
+
+//Assests
+import logo from "../../assests/Brand-icon.png";
+
+//Utils
+import { navElements } from "../../utils/navElements";
+
+//Styles
+import { StyledNavWrapper, StyledCart, ProductsQty, NavElement } from "./style";
+
 class Navbar extends React.Component {
+  state = {
+    current: 0,
+  };
+
+  setNavItemsActiveState = (i) => {
+    this.setState({ current: i });
+  };
+
   render() {
     return (
       <StyledNavWrapper>
         <nav>
           <ul className="options">
-            <li>All</li>
-            <li>Clothes</li>
-            <li>Tech</li>
+            {navElements.map((element, i) => (
+              <NavElement
+                key={i}
+                style={{
+                  borderBottom:
+                    this.state.current === i ? "2px solid #5ece7b" : 0,
+                }}
+                onClick={() => {
+                  this.props.filterPages(i, element.name);
+                  this.setNavItemsActiveState(i);
+                }}
+                active={this.state.current === i}
+              >
+                {element.name}
+              </NavElement>
+            ))}
           </ul>
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
           <ul className="nav-actions">
             <li onClick={() => this.props.toggleCurrencyMenu()}>
-              {this.props.currency}
+              {this.props.currency}{" "}
               <svg
                 width="8"
                 height="4"
@@ -45,10 +78,12 @@ class Navbar extends React.Component {
               </svg>
             </li>
             <li>
-              <StyledEmptyCart
+              <StyledCart
                 onClick={() => this.props.toggleCart()}
                 src="/images/emptyCart.svg"
-              ></StyledEmptyCart>
+              >
+                <ProductsQty>{Object.keys(this.props.cart).length}</ProductsQty>
+              </StyledCart>
             </li>
           </ul>
         </nav>
@@ -59,6 +94,7 @@ class Navbar extends React.Component {
   }
 }
 
+//State To Props & Dispatch To Props
 const mapStateToProps = (state) => {
   return {
     toggle: state.toggle.toggleState,
@@ -71,6 +107,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     toggleCart: () => dispatch(toggleCartAction()),
     toggleCurrencyMenu: () => dispatch(toggleCurrencyMenu()),
+    filterPages: (arrIndex, catName) =>
+      dispatch(productsFilterAction(arrIndex, catName)),
   };
 };
 

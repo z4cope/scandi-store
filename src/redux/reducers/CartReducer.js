@@ -21,8 +21,6 @@ const CartReducer = (state = initState, action) => {
   const cartId = createProductAttribIdentifier(product);
   const productExist = state.data[cartId];
 
-  console.log("cartId", cartId, action.payload);
-
   switch (action.type) {
     case ADD_TO_CART:
       return {
@@ -48,7 +46,7 @@ const CartReducer = (state = initState, action) => {
           },
         },
       };
-      break;
+
     case DECREMENT_PRODUCT:
       if (productExist.qty - 1 === 0) {
         const newState = {

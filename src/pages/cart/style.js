@@ -8,7 +8,6 @@ export const CartWrapper = styled.div`
 export const HeadLine = styled.h2`
   font-weight: bold;
   font-size: 32px;
-  line-height: 40px;
   margin-top: 80px;
   margin-bottom: 59px;
 `;
@@ -26,21 +25,19 @@ export const ProductDetails = styled.div``;
 export const ProductName = styled.h2`
   font-weight: 600;
   font-size: 30px;
-  line-height: 27px;
   margin-bottom: 16px;
 `;
 
-export const ProductSubName = styled.h3`
+export const ProductDesc = styled.h3`
   font-weight: normal;
   font-size: 30px;
-  line-height: 27px;
+  margin-top: 16px;
 `;
 
 export const Price = styled.h4`
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
-  line-height: 18px;
   margin: 12px 0px;
 `;
 
@@ -55,9 +52,12 @@ export const ProductQuantity = styled.div`
 export const Qunatity = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-right: 12px;
+  h5 {
+    margin: 30px 0px;
+  }
   button {
     width: 45px;
     height: 45px;
@@ -72,7 +72,6 @@ export const SelectedVariants = styled.h3`
   border: 1px solid #1d1f22;
   font-weight: 400;
   font-size: 16px;
-  line-height: 18px;
   color: #000;
   display: flex;
   justify-content: center;

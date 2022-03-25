@@ -13,4 +13,5 @@ export const Arrow = styled.div`
   background: url(${({ src }) => src}) center / contain no-repeat;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 `;

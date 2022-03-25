@@ -3,7 +3,7 @@ import React from "react";
 //Components
 import Navbar from "../components/navbar/Navbar";
 
-class Layout extends React.Component {
+class RouterRefreshResolver extends React.Component {
   render() {
     return (
       <>
@@ -14,4 +14,4 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout;
+export default RouterRefreshResolver;

@@ -1,5 +1,6 @@
 //General react imports
 import React from "react";
+
 //Styles
 import { SliderWrapper, Arrow } from "./style";
 

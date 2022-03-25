@@ -7,10 +7,8 @@ export const HomeWrapper = styled.div`
 
 export const HomeHeadLine = styled.h2`
   margin: 80px 0px 87.62px 5%;
-  font-style: normal;
   font-weight: normal;
   font-size: 42px;
-  line-height: 160%;
 `;
 
 export const ProductsWrapper = styled.div`

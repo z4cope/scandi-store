@@ -18,7 +18,7 @@ export const AttributeType = styled.button`
   margin: 0 12px 40px 0;
 `;
 
-export const TechVariants = styled.div`
+export const VariantsWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
